@@ -72,3 +72,34 @@ By creating a ssh tunnel we won’t need to add any security group to the ec2 in
 ```
 ssh -N -v -L 7091:127.0.0.1:7091 -L 7091:127.0.0.1:7091 ec2-user@ec2xxxxx.compute.amazonaws.com -i <your aws key.pem>
 ```
+
+
+**6. Launch the profiler**
+
+* JVisualVM
+
+Open a console and type the following:
+```
+jvisualvm
+```
+Add a JMX connection with the following connection information:
+```
+localhost:7091
+```
+You can change the display name to whatever name and check the "Do not require SSL connection" option.
+
+![jmx](http://corporacionkristalia.com/jvisualvm-sources/2-jvisualvm.png)
+
+* JConsole
+
+Open a console and type the following:
+```
+jconsole
+```
+Add a remote process connection with the following information:
+```
+localhost:7091
+```
+
+![jmx](http://corporacionkristalia.com/jvisualvm-sources/3-jconsole.png)
+
