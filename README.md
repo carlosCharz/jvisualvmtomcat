@@ -47,7 +47,7 @@ CATALINA_OPTS="-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmx
 CATALINA_OPTS="-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=127.0.0.1 $CATALINA_OPTS"
 ```
 
-** Note:** Use CATALINA_OPTS instead of JAVA_OPTS. If you use JAVA_OPTS you might get a java.net.BindException: Address already in use.
+**Note:** Use CATALINA_OPTS instead of JAVA_OPTS. If you use JAVA_OPTS you might get a java.net.BindException: Address already in use.
 This is because with this JAVA_OPTS option will try to start a jmx server when you start and when you shutdown tomcat. Nevertheless, if you use CATALINA_OPTS will only run when you start tomcat.
 
 
@@ -66,5 +66,9 @@ sudo netstat -lp | grep java
 ![jmx](http://corporacionkristalia.com/jvisualvm-sources/1-jmx.png)
 
 
+**5. Create a SSH-tunnel to the JMX and RMI ports**
 
-
+By creating a ssh tunnel we won’t need to add any security group to the ec2 instance so we will be able to skip the firewall. In your local machine create a ssh tunnel to the RMI and JMX ports using the following command:
+```
+ssh -N -v -L 7091:127.0.0.1:7091 -L 7091:127.0.0.1:7091 ec2-user@ec2xxxxx.compute.amazonaws.com -i <your aws key.pem>
+```
