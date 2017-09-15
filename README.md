@@ -79,7 +79,9 @@ ssh -N -v -L 7091:127.0.0.1:7091 -L 7091:127.0.0.1:7091 ec2-user@ec2xxxxx.comput
 ```
 
 * Windows
+
 **Note:** If you are in Windows you can set up the tunnel using Putty with the following configuration:
+
 ![putty](http://corporacionkristalia.com/jvisualvm-sources/2-putty.png)
 
 **6. Launch the profiler**
@@ -114,7 +116,7 @@ localhost:7091
 
 ## Thanks
 
-* How to connect a Java profiler like VisualVm or JConsole to a remote tomcat running on Amazon EC2 [java profiler jvisualvm](http://ignaciosuay.com/how-to-connect-a-java-profiler-like-visualvm-or-jconsole-to-a-remote-tomcat-running-on-amazon-ec2/).
-* Profiling a jvm in ec2 with visualvm [profiling jvm] (https://metabroadcast.com/blog/profiling-a-jvm-in-ec2-with-visualvm). 
+* How to connect a Java profiler like VisualVm or JConsole to a remote tomcat running on Amazon EC2 [java profiler](http://ignaciosuay.com/how-to-connect-a-java-profiler-like-visualvm-or-jconsole-to-a-remote-tomcat-running-on-amazon-ec2/).
+* Profiling a jvm in ec2 with visualvm [profiling jvm](https://metabroadcast.com/blog/profiling-a-jvm-in-ec2-with-visualvm). 
 
 _**Any improvement or comment about this info is always welcome! As well as others shared their code publicly I want to share mine! Thanks!**_
