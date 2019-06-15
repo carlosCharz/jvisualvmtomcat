@@ -1,9 +1,9 @@
-# JVisualVM tomcat EC2
+# JVisualVM Tomcat EC2
 The objective is to connect a Java profiler like JVisualVm or JConsole to a remote tomcat running on AWS EC2 Instance (Amazon Linux AMI).
 
 
 
-## Environment information
+## Environment Information
  * Tomcat: tomcat 8.0.x (through yum)
  * Instance type: EC2 t2.micro
  * OS: Red Hat 4.8.3-9
@@ -17,9 +17,9 @@ The machine already has the following software installed from my previous tutori
  
  
  
- ## Configuration steps
+ ## Configuration Steps
  
- **1. Find the environment file for tomcat**
+ **1. Find the environment file for Tomcat**
  
  * If you installed tomcat8 through yum command this path '/etc/tomcat8/tomcat8.conf' is correct. 
 ```
@@ -35,7 +35,7 @@ chmod +x setenv.sh
 ```
 
 
-**2. Set the JMX configuration**
+**2. Set the JMX Configuration**
 
 In the tomcat8.conf or setenv.sh file you need to add the following configuration to the CATALINA_OPTS variable. In my configuration I have chosen randomly the 7091 for my JMX port.
 
@@ -54,7 +54,7 @@ CATALINA_OPTS="-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmx
 This is because with this JAVA_OPTS option will try to start a JMX server when you start and shutdown tomcat. Nevertheless, if you use CATALINA_OPTS will only run when you start tomcat.
 
 
-**3. Restart tomcat**
+**3. Restart Tomcat**
 ```
 service tomcat8 restart
 ```
@@ -66,7 +66,7 @@ When you start tomcat in the server, Java will open a TCP port for RMI calls. Th
 ```
 sudo netstat -lp | grep java
 ```
-![jmx](http://corporacionkristalia.com/jvisualvm-sources/1-jmx.png)
+![jmx](http://wedevol.com/github/jvisualvmtomcat/1-jmx.png)
 
 
 **5. Create a SSH-tunnel to the JMX and RMI ports**
@@ -82,9 +82,9 @@ ssh -N -v -L 7091:127.0.0.1:7091 -L 7091:127.0.0.1:7091 ec2-user@ec2xxxxx.comput
 
 **Note:** If you are in Windows you can set up the tunnel using Putty with the following configuration:
 
-![putty](http://corporacionkristalia.com/jvisualvm-sources/2-putty.png)
+![putty](http://wedevol.com/github/jvisualvmtomcat/2-putty.png)
 
-**6. Launch the profiler**
+**6. Launch the Profiler**
 
 * JVisualVM
 
@@ -98,7 +98,7 @@ localhost:7091
 ```
 You can change the display name to whatever name and check the "Do not require SSL connection" option.
 
-![jvisualvm](http://corporacionkristalia.com/jvisualvm-sources/3-jvisualvm.png)
+![jvisualvm](http://wedevol.com/github/jvisualvmtomcat/3-jvisualvm.png)
 
 * JConsole
 
@@ -111,7 +111,7 @@ Add a remote process connection with the following information:
 localhost:7091
 ```
 
-![jconsole](http://corporacionkristalia.com/jvisualvm-sources/4-jconsole.png)
+![jconsole](http://wedevol.com/github/jvisualvmtomcat/4-jconsole.png)
 
 
 ## Thanks
